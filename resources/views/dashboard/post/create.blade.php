@@ -10,8 +10,19 @@
     <h1>Ingreso de Post</h1><br><br>
 
     <form action="{{route('post.store')}}" method='post'>
-
         @csrf
+        <label for="">Titulo</label>
+        <input type="text" name="title">
+
+        <label for="">URL Corta</label>
+        <input type="text" name="slug">
+
+        <label for="">Descripción</label>
+        <textarea name="description"></textarea>
+
+        <label for="">Contenido</label>
+        <textarea name="content"></textarea>
+
         <button type='submit'>Enviar</button>
     </form>
 </body>

@@ -16,8 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        //echo('Juan Carlos Neíl Palacios Escobar. --- 202008022');
-        //
+        
     }
 
     /**
@@ -40,6 +39,8 @@ class PostController extends Controller
     {
         echo "El título trae ".$request->title;
         Post::create($request->validated());
+        return back()->with('status','Post Created');
+        //return redirect()->route('dashboard.post.index')->with('status','Post Created');
     }
 
     /**
@@ -61,7 +62,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+
     }
 
     /**
@@ -72,8 +73,8 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Post $post)
-    {
-        //
+    { 
+
     }
 
     /**
@@ -84,6 +85,6 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+
     }
 }

@@ -22,6 +22,11 @@
             @endforeach
         @endif --}}
         @csrf
+        @if (session('status'))
+            <div class="alert alert-success" role="alert">
+                {{session('status')}}
+            </div>
+        @endif
         <label for="">Titulo</label>
         <input type="text" name="title" placeholder="Escribe el Título">
         @error("title")
@@ -39,10 +44,6 @@
                 <br>
             </small>
         @enderror
-
-        <label for="">Descripción</label>
-        <textarea name="description" placeholder="Coloca descripción"></textarea>
-
         <label for="">Contenido</label>
         <textarea name="content" placeholder="Colaca el contenido"></textarea>
         @error("content")

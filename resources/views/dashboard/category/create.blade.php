@@ -12,7 +12,7 @@
     <title>Categories</title>
 </head>
 <body>
-    <form action="{{route('category.store')}}" method='category' class="form-register">
+    <form action="{{route('category.store')}}" method="Post" class="form-register">
         @csrf
         @if (session('status'))
             <div class="alert alert-success" role="alert">

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreCategoryCategory;
+use App\Http\Requests\StoreCategoryPost;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -35,7 +35,7 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCategoryCategory $request)
+    public function store(StoreCategoryPost $request)
     {
         echo "El título trae ".$request->title;
         Category::create($request->validated());

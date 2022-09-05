@@ -12,13 +12,9 @@
     <title>Categories</title>
 </head>
 <body>
+    @include('dashboard.Partials.nav-header-main')
     <form action="{{route('category.store')}}" method="Post" class="form-register">
-        @csrf
-        @if (session('status'))
-            <div class="alert alert-success" role="alert">
-                {{session('status')}}
-            </div>
-        @endif
+        @include('dashboard.partials.sesion-flash-status')
         <h4>Add Categories</h4>
         <input class="controls" type="text" name="title" id="title" placeholder="Title">
         @error("title")
@@ -34,7 +30,7 @@
                 <br>
             </small>
         @enderror
-        <button type="submit" class="botons">Save</button>
+        <button type="submit" class="botons">Submit</button>
       </form>
 </body>
 </html>

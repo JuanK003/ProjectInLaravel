@@ -16,7 +16,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //
+        $categories=Category::orderBy('created_at','asc') -> cursorpaginate(2);
+        echo view('dashboard.category.index',['categories'=>$categories]);
     }
 
     /**

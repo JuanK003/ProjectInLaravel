@@ -16,7 +16,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts=Post::orderBy('created_at','asc') -> cursorpaginate(2);
+        $posts=Post::orderBy('created_at','asc') -> cursorpaginate(3);
         echo view('dashboard.post.index',['posts'=>$posts]);
     }
 
@@ -40,7 +40,7 @@ class PostController extends Controller
     {
         echo "El título trae ".$request->title;
         Post::create($request->validated());
-        return back()->with('status','Post Created');
+        return back()->with('status','Post Creado');
         //return redirect()->route('dashboard.post.index')->with('status','Post Created');
     }
 
@@ -52,7 +52,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        echo view ('dashboard.post.show', ["post"=>$post]);
     }
 
     /**

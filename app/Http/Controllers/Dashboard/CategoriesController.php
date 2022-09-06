@@ -16,7 +16,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $categories=Category::orderBy('created_at','asc') -> cursorpaginate(2);
+        $categories=Category::orderBy('created_at','asc') -> cursorpaginate(3);
         echo view('dashboard.category.index',['categories'=>$categories]);
     }
 
@@ -40,7 +40,7 @@ class CategoriesController extends Controller
     {
         echo "El título trae ".$request->title;
         Category::create($request->validated());
-        return back()->with('status','Category Created');
+        return back()->with('status','Categoria Creada');
     }
 
     /**
@@ -51,7 +51,7 @@ class CategoriesController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        echo view ('dashboard.category.show', ["category"=>$category]);
     }
 
     /**

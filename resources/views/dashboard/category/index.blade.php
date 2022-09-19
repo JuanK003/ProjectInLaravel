@@ -15,7 +15,7 @@
     @include('dashboard.partials.nav-header-main')
     <br><br><br>
     <div class="container">
-        <a class="btn btn-primary" href={{route('category.create')}}>Crear</a>
+        <a class="btn btn-success" href={{route('category.create')}}>Crear</a>
         <br><br>
         <table class="table">
             <thead>
@@ -68,6 +68,12 @@
                         </td>
                         <td>
                             <a href="{{route('category.show', $category->id)}}" class="btn btn-primary">Ver</a>
+                            <a href="{{route('category.edit', $category->id)}}" class="btn btn-primary">Actualizar</a>
+                            <form method="POST" action="{{route('category.destroy',$category->id)}}">
+                                @method('DELETE')
+                                @csrf
+                                <button class="btn btn-danger" type="submit">Eliminar</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

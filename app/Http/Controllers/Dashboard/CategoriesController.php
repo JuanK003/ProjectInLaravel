@@ -27,7 +27,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        echo view('dashboard.category.create');
+        echo view('dashboard.category.create',["category"=>new Category()]);
     }
 
     /**
@@ -62,7 +62,7 @@ class CategoriesController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        echo view ('dashboard.category.edit', ["category"=>$category]);
     }
 
     /**
@@ -72,9 +72,10 @@ class CategoriesController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(StoreCategoryPost $request, Category $category)
     {
-        //
+        $category->update($request->validated());
+        return back()->with('status','Categoria Actualizada');
     }
 
     /**
@@ -85,6 +86,7 @@ class CategoriesController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return back()->with('status','Categoria Eliminado');
     }
 }

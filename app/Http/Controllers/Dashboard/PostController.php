@@ -27,7 +27,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        echo view('dashboard.post.create');
+        echo view('dashboard.post.create',["post"=>new post()]);
     }
 
     /**
@@ -63,7 +63,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-
+        echo view ('dashboard.post.edit', ["post"=>$post]);
     }
 
     /**
@@ -73,9 +73,10 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(StorePostPost $request, Post $post)
     { 
-
+        $post->update($request->validated());
+        return back()->with('status','Post Actualizado');
     }
 
     /**
@@ -86,6 +87,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-
+        $post->delete();
+        return back()->with('status','Post Eliminado');
     }
 }

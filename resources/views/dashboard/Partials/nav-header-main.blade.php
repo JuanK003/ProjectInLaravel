@@ -21,11 +21,6 @@
               <ul class="dropdown-menu dropdown-menu-dark">
                 <li><a class="dropdown-item" href={{route('post.index')}}>Post</a></li>
                 <li><a class="dropdown-item" href={{route('post.create')}}>Create</a></li>
-                <li><a class="dropdown-item" href="#">Update</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Delete</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -35,11 +30,6 @@
                 <ul class="dropdown-menu dropdown-menu-dark">
                     <li><a class="dropdown-item" href={{route('category.index')}}>Category</a></li>
                     <li><a class="dropdown-item" href={{route('category.create')}}>Create</a></li>
-                    <li><a class="dropdown-item" href="#">Update</a></li>
-                    <li>
-                      <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="#">Delete</a></li>
                 </ul>
             </li>
             <li class="nav-item">

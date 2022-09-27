@@ -80,7 +80,7 @@
                             <form method="POST" action="{{route('post.destroy',$post->id)}}">
                                 @method('DELETE')
                                 @csrf
-                                <button class="btn btn-danger" type="submit">Eliminar</button>
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="{{$post->id}}" class="btn btn-danger">Eliminar</button>
                             </form>
                         </td>
                     </tr>
@@ -88,6 +88,51 @@
             </thead>
             {{$posts->links()}}
         </table>
+
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Alerta</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>¿Estas seguro de eliminar el post de {{$post->title}}?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <form method="POST" action="{{route('post.destroy',$post->id)}}">
+                    @method('DELETE')
+                    @csrf
+                    <button type="submit" class="btn btn-danger">Borrar</button>
+                </form>        
+            </div>
+            </div>
+        </div>
+        </div>
     </div>
 </body>
 </html>
+
+@section('script')
+    <script>
+        const exampleModal = document.getElementById('exampleModal')
+        exampleModal.addEventListener('show.bs.modal', event => {
+        // Button that triggered the modal
+        const button = event.relatedTarget
+        // Extract info from data-bs-* attributes
+        const recipient = button.getAttribute('data-id') 
+        // If necessary, you could initiate an AJAX request here
+        // and then do the updating in a callback.
+        //  
+        // Update the modal's content.
+        const modalTitle = exampleModal.querySelector('.modal-title')
+        const modalBodyInput = exampleModal.querySelector('.modal-body input')
+
+        modalTitle.textContent = `Eliminar el post ${recipient}`
+        modalBodyInput.value = recipient
+        })
+    </script>
+@endsection
